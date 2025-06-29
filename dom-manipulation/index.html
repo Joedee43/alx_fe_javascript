@@ -31,39 +31,39 @@
             border-left: 5px solid #42b983;
             margin: 20px 0;
             padding: 20px 30px;
-            border-radius: 8px; /* Slightly more rounded */
-            min-height: 120px; /* Increased height */
-            width: 90%; /* Responsive width */
-            max-width: 650px; /* Increased max-width */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+            border-radius: 8px; 
+            min-height: 120px; 
+            width: 90%; 
+            max-width: 650px; 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
             display: flex;
             flex-direction: column;
             justify-content: center;
-            transition: all 0.3s ease; /* Smooth transition for display */
+            transition: all 0.3s ease; 
         }
         
         #quoteDisplay p {
             margin: 0;
-            font-size: 1.4em; /* Larger font */
+            font-size: 1.4em; 
             font-style: italic;
             color: #444;
             text-align: center;
         }
         
         #quoteDisplay footer {
-            margin-top: 15px; /* More space */
+            margin-top: 15px; 
             text-align: right;
-            font-weight: 600; /* Bolder */
+            font-weight: 600; 
             color: #555;
             font-size: 0.95em;
         }
 
         #controls, #addQuoteForm, #jsonControls, #filterControls {
-            margin-top: 25px; /* More spacing */
+            margin-top: 25px; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px; /* Increased gap */
+            gap: 12px; 
             width: 90%;
             max-width: 650px;
             padding: 20px;
@@ -75,36 +75,36 @@
 
         #jsonControls {
             margin-top: 30px;
-            background-color: #e0f7fa; /* Different background for JSON controls */
+            background-color: #e0f7fa; 
             border-left: 5px solid #00bcd4;
         }
 
         #filterControls {
-            background-color: #e8f5e9; /* Light green for filter controls */
+            background-color: #e8f5e9; 
             border-left: 5px solid #66bb6a;
         }
         
         input[type="text"], input[type="file"], select {
-            padding: 12px; /* Larger padding */
-            border: 1px solid #ddd; /* Lighter border */
-            border-radius: 6px; /* More rounded */
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
             width: 100%;
             box-sizing: border-box;
             font-size: 1em;
             transition: border-color 0.3s;
-            background-color: white; /* Ensure select has white background */
-            appearance: none; /* Remove default select styling */
+            background-color: white; 
+            appearance: none; 
             -webkit-appearance: none;
             -moz-appearance: none;
             background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.4H18.6c-5%200-9.3%201.8-13.2%206.4-3.9%204.5-6%2010.1-6%2016.3%200%206.2%202.1%2011.7%206%2016.3l119.8%20119.8c3.9%204.5%209.3%206.4%2014.8%206.4s10.9-1.8%2014.8-6.4L287%20102c3.9-4.5%206-10.1%206-16.3s-2.1-11.7-6-16.3z%22%2F%3E%3C%2Fsvg%3E'); /* Custom dropdown arrow */
             background-repeat: no-repeat;
             background-position: right 12px top 50%;
             background-size: 12px auto;
-            padding-right: 30px; /* Space for the custom arrow */
+            padding-right: 30px; 
         }
 
         input[type="text"]:focus, input[type="file"]:focus, select:focus {
-            border-color: #42b983; /* Highlight on focus */
+            border-color: #42b983; 
             outline: none;
         }
 
@@ -112,25 +112,25 @@
             background-color: #42b983;
             color: white;
             border: none;
-            padding: 12px 25px; /* Larger padding */
-            border-radius: 6px; /* More rounded */
+            padding: 12px 25px; 
+            border-radius: 6px; 
             cursor: pointer;
-            font-size: 1.1em; /* Larger font */
+            font-size: 1.1em; 
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 100%; /* Full width for buttons in form */
-            max-width: 250px; /* Max width for buttons */
+            width: 100%; 
+            max-width: 250px; 
         }
 
         button:hover {
             background-color: #36a374;
-            transform: translateY(-2px); /* Slight lift effect */
+            transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         button:active {
-            transform: translateY(0); /* Press down effect */
+            transform: translateY(0); 
         }
 
         hr {
@@ -141,16 +141,16 @@
             border-top: 1px solid #eee;
         }
 
-        /* Responsive adjustments */
+        
         @media (min-width: 768px) {
             #controls, #addQuoteForm, #jsonControls, #filterControls {
-                flex-direction: row; /* Buttons/inputs in a row on larger screens */
+                flex-direction: row; 
                 justify-content: center;
                 flex-wrap: wrap;
             }
             button {
-                width: auto; /* Auto width for buttons */
-                flex-grow: 1; /* Allow buttons to grow */
+                width: auto; 
+                flex-grow: 1; 
             }
             input[type="text"], select {
                 flex-grow: 1;
