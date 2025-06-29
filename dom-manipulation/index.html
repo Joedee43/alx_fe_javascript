@@ -66,6 +66,16 @@
     <button onclick="addQuote()">Add Quote</button>
   </div>
 
+  <!-- JSON Import/Export Controls -->
+    <div id="jsonControls">
+        <h2>JSON Data Management</h2>
+        <button id="exportQuotesBtn">Export Quotes (JSON)</button>
+        <label for="importFile" class="button" style="display: inline-block; text-align: center;">
+            Import Quotes (JSON)
+            <input type="file" id="importFile" accept=".json" style="display: none;" />
+        </label>
+    </div>
+
   <script src="script.js"></script>
 </body>
 </html>
