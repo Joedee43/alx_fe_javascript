@@ -16,6 +16,7 @@ function init() {
   newQuoteBtn.addEventListener('click', showRandomQuote);
   updateCategoryFilter();
   showRandomQuote();
+newQuoteBtn.addEventListener('click', showRandomQuote);
 }
 
 function showRandomQuote() {
@@ -43,8 +44,9 @@ function showRandomQuote() {
 function addQuote() {
   const text = newQuoteText.value.trim();
   const category = newQuoteCategory.value.trim();
+  
   if (text && category) {
-    quotes.push({ text, category });
+    quotes.push({ text, category });  
     newQuoteText.value = '';
     newQuoteCategory.value = '';
     updateCategoryFilter();
