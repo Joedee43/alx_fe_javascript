@@ -873,42 +873,39 @@ async function syncQuotes() {
     let conflictsResolved = 0;
     let newQuotesAdded = 0;
 
+    // Create a Set of existing local quote texts for efficient lookup
     const currentLocalQuoteTexts = new Set(quotes.map(q => q.text));
 
     serverQuotes.forEach(serverQuote => {
-        const existingLocalQuoteIndex = quotes.findIndex(localQuote => 
-            localQuote.text === serverQuote.text && localQuote.category === serverQuote.category
-        );
-
-        if (existingLocalQuoteIndex === -1) {
+        // Check if the server quote (by its text) already exists locally
+        if (!currentLocalQuoteTexts.has(serverQuote.text)) {
             // If server quote doesn't exist locally, add it
             quotes.push(serverQuote);
             newQuotesAdded++;
             localQuotesUpdated = true;
         } else {
-            // For simplicity, if a quote exists, server data takes precedence.
-            // In a real app, you might compare timestamps or prompt user for conflict resolution.
-            // Since JSONPlaceholder doesn't provide timestamps for posts readily,
-            // we'll consider any exact match from server as already synced or server-dominant.
-            // If the quote exists but might have been modified locally, server version overwrites.
-            // For JSONPlaceholder, we're just checking for existence, not content changes.
-            // If a conflict means the local version changed, and server's is different,
-            // the server's version would implicitly overwrite by keeping the server data and not applying local edits back.
-            // For this simulation, we're mostly concerned with *adding* new server data.
-            // No action needed if exact quote exists and server takes precedence.
+            // Conflict resolution: Server data takes precedence.
+            // If a quote with the same text exists locally, we check if the category differs.
+            // If it differs, we update the local quote with the server's category.
+            const localQuote = quotes.find(q => q.text === serverQuote.text);
+            if (localQuote && localQuote.category !== serverQuote.category) {
+                localQuote.category = serverQuote.category;
+                conflictsResolved++;
+                localQuotesUpdated = true;
+            }
         }
     });
-
-    // Handle quotes that are local but not on the server (i.e., new local additions)
-    // For JSONPlaceholder, we can't truly check if our locally added quotes exist on the "server"
-    // (as it's a mock API and we just push to a dummy endpoint).
-    // In a real scenario, you would compare local IDs with server IDs and push local changes to the server.
-    // For this simulation, we'll assume any new local quotes will be pushed via `postQuoteToServer` when added.
     
-    if (newQuotesAdded > 0) {
+    if (newQuotesAdded > 0 || conflictsResolved > 0) {
         saveQuotes(); // Save updated quotes array to local storage
         populateCategories(); // Update categories dropdown
-        displayMessage(`Sync complete: ${newQuotesAdded} new quotes added from server.`, "success");
+        let syncMessage = `Sync complete: ${newQuotesAdded} new quotes added`;
+        if (conflictsResolved > 0) {
+            syncMessage += `, ${conflictsResolved} conflicts resolved (server precedence).`;
+        } else {
+            syncMessage += ".";
+        }
+        displayMessage(syncMessage, "success");
     } else {
         displayMessage("Sync complete: No new quotes from server or conflicts detected.", "success");
     }
